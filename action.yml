@@ -1,9 +1,9 @@
-name: Tag Changelog
-description: Automatically generate a changelog since the last tag, using the conventional commit format
-author: Loopwerk
+name: Tag Changelog Multiline
+description: Automatically generate a changelog since the last tag, using the conventional commit format with multiline commit messages support
+author: magicsk
 branding:
   icon: align-left
-  color: orange
+  color: red
 inputs:
   token:
     description: Github repository token
@@ -16,9 +16,9 @@ inputs:
     required: false
 outputs:
   changelog:
-    description: Generated changelog for the latest tag
+    description: Generated changelog for the latest tag (multiline commit message support)
   changes:
-    description: Generated changelog for the latest tag, without the version/date header
+    description: Generated changelog for the latest tag (multiline commit message support), without the version/date header
 runs:
   using: node12
   main: "dist/index.js"
