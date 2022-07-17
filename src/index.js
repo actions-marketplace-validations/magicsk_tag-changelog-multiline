@@ -80,17 +80,22 @@ async function run() {
   };
 
   // Parse every commit, getting the type, turning PR numbers into links, etc
-  const commitObjects = await Promise.all(
-    result.data.commits
-      .map(async (commit) => {
-        const commitObj = await parseCommitMessage(commit.commit.message, `https://github.com/${owner}/${repo}`, fetchUserFunc);
+  const commitMessages = async (commits) => {
+    const commitObjs = [];
+    await commits.forEach(async (commit) => {
+      const messages = commit.commit.message.split("\n");
+      await messages.forEach(async (message) => {
+        const commitObj = await parseCommitMessage(message, `https://github.com/${owner}/${repo}`, fetchUserFunc);
         commitObj.sha = commit.sha;
         commitObj.url = commit.html_url;
         commitObj.author = commit.author;
-        return commitObj;
-      })
-      .filter((m) => m !== false)
-  );
+        commitObjs.push(commitObj);
+      });
+    });
+    return commitObjs.filter((m) => m !== false);
+  };
+
+  const commitObjects = await commitMessages(result.data.commits);
 
   // And generate the changelog
   if (commitObjects.length === 0) {
