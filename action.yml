@@ -1,5 +1,5 @@
 name: Tag Changelog Multiline
-description: Automatically generate a changelog since the last tag, using the conventional commit format with multiline commit messages support
+description: Automatically generate a changelog, using the conventional commit format with multiline commit messages support
 author: magicsk
 branding:
   icon: align-left
