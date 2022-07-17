@@ -26,7 +26,7 @@ jobs:
 
       - name: Create changelog text
         id: changelog
-        uses: loopwerk/tag-changelog@v1
+        uses: magicsk/tag-changelog-multiline@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           exclude_types: other,doc,chore
@@ -53,7 +53,7 @@ jobs:
 ## Custom config
 ``` yml
 - name: Create changelog text
-  uses: loopwerk/tag-changelog@v1
+  uses: loopwerk/tag-changelog-multiline@v2
   with:
     token: ${{ secrets.GITHUB_TOKEN }}
     config_file: .github/tag-changelog-config.js
@@ -126,4 +126,4 @@ You can also check out the [Releases page](https://github.com/loopwerk/tag-chang
 - Handle the very first tag - currently this Action only works when at least two tags are found
 
 ## Thanks
-Thanks to [Helmisek/conventional-changelog-generator](https://github.com/Helmisek/conventional-changelog-generator) and [ardalanamini/auto-changelog](https://github.com/ardalanamini/auto-changelog) for inspiration. Thanks to [nektos/act](https://github.com/nektos/act) for making it possible to run GitHub Actions locally, making development and testing a whole lot easier.
+Thanks to [loopwerk/tag-changelog](https://github.com/loopwerk/tag-changelog) for version which i forked. Thanks to [Helmisek/conventional-changelog-generator](https://github.com/Helmisek/conventional-changelog-generator) and [ardalanamini/auto-changelog](https://github.com/ardalanamini/auto-changelog) for inspiration. Thanks to [nektos/act](https://github.com/nektos/act) for making it possible to run GitHub Actions locally, making development and testing a whole lot easier.
